@@ -1,6 +1,3 @@
-# README
-
-
 ## Project Informations
 
 This repository is the result of a Hiwi project at the Friedrich-Schiller-University Jena
