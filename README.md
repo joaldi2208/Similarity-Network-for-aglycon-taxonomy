@@ -1,4 +1,4 @@
-## Project Informations
+## Project Information
 
 This repository is the result of a Hiwi project at the Friedrich-Schiller-University Jena
 in the AG Steinbeck for cheminformatics. Supervisior of this project was Dr. Maria
