@@ -101,17 +101,18 @@ A{Sim_Network} -->|call| B(single_taxonomy);
     F-->|read| A
 ```
 #### More detailed description
-The Sim_Network module is the main module with the main function and is used as control module for the user input and the file reading from the output_data folder. 
 
-The first called module is the single_taxonomy module. In this module all aglycons from the sweetcoconut and coconut database are saved in data frame and merged together, to get a dataframe with all aglycons in the sweetcoconut database with have a known or not known taxonomy. Two aglycons with the same structure but different id have had different sugar surroundings. Nevertheless all aglycons with the same structure should be produced by the same (super)kingdom. Afterwards a data frame was created where each row contain a different aglycon structure its taxonomy is unknown or from one particular (super)kingdom.
+The Sim_Network module is the main module and is used as control module for user input and reading the files from the output_data folder. 
 
-The second called module is the tanimoto_index module. The module is creates Morgan Fingerprints for each smiles code of the aglycons and determine the tanimoto index between all two pair combinations of aglycons. The written data frame includes the smiles code of the aglycons pairs as well as the taxonomies and the tanimoto index for all aglycon pairs with an higher tanimoto index than the set similarity input. 
+The first module called is the single_taxonomy module. In this module, all aglycons from the sweetcoconut and coconut databases are stored in data frames and merged to obtain a data frame with all aglycons in the sweetcoconut database that have a known or unknown taxonomy. Two aglycons with the same structure but different ID previously had a different sugar environment. Nevertheless, all aglycons with the same structure should be from the same (super)kingdom, so a data frame was subsequently created in which each row contains a different aglycon structure whose taxonomy is unknown or from a particular (super)kingdom.
 
-The third called module is the prediction_annotation module. In this module a similarity network for the aglycons are created. If the size of the cluster is greater than two and more than the half of the aglycons in the cluster are from the same (super)kingdom, all aglycons with an unknown taxonomy or a different taxonomy get a predicted annotation, which includes a predict as prefix. Aglycons with a different taxonomy still have their old taxonomy with the predict taxonomy added right behind. A list of dataframes a created where each dataframe corresponds to one cluster.
+The second module called is the tanimoto_index module. The module creates Morgan fingerprints for each Smiles code of the aglycons and determines the Tanimoto index between all two pair combinations of aglycons. The written data frame contains the Smiles code as well as the taxonomies and the tanimoto index for all pairs of aglycons that have a higher tanimoto index than the one set. 
 
-The last called module creates a statistic report from the list of data frames and write a json file with all important data.
+The third module called is the prediction_annotation module. In this module, a similarity network is created for the aglycons. If the size of the cluster is greater than two and more than half of the aglycons in the cluster are from the same (super)kingdom, all aglycons with an unknown taxonomy or a different taxonomy will receive a predicted annotation containing a predict as a prefix. Aglycons with a different taxonomy still have their old taxonomy, with the predict taxonomy inserted right after it. A list of dataframes is then created, with each dataframe corresponding to a cluster.
 
-For an even more detailed description please use the docstrings in the python scripts.
+The last module called creates a statistical report from the list of dataframes and writes a json file with all important data.
+
+For an even more detailed description, please use the docstrings in the python scripts.
  
 ## Limits of the program
 
