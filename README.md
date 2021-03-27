@@ -110,6 +110,8 @@ The second called module is the tanimoto_index module. The module is creates Mor
 The third called module is the prediction_annotation module. In this module a similarity network for the aglycons are created. If the size of the cluster is greater than two and more than the half of the aglycons in the cluster are from the same (super)kingdom, all aglycons with an unknown taxonomy or a different taxonomy get a predicted annotation, which includes a predict as prefix. Aglycons with a different taxonomy still have their old taxonomy with the predict taxonomy added right behind. A list of dataframes a created where each dataframe corresponds to one cluster.
 
 The last called module creates a statistic report from the list of data frames and write a json file with all important data.
+
+For an even more detailed description please use the docstrings in the python scripts.
  
 ## Limits of the program
 
