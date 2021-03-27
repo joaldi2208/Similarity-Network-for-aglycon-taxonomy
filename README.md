@@ -87,7 +87,7 @@ statistic_report.py
 </center>
 <p>&nbsp;</p>
 
-After starting the program, the main function calls the single_taxonomy moduls and then runs through the program from top to bottom as shown in the scheme. Beside the required tables and files, there are a <span style="color:orange">bar chart</span> and a <span style="color:orange">venn diagram</span> for the aglycons and their taxonomy from the selected databases. When the program runs through the statistic_report module a json file containing a <span style="color:orange">statistic report</span> is created.
+After starting the program, the main function calls the single_taxonomy moduls and then runs through the program from top to bottom as shown in the schema. Beside the required tables and files, there are a <span style="color:orange">bar chart</span> and a <span style="color:orange">venn diagram</span> for the aglycons and their taxonomy from the selected databases. When the program runs through the statistic_report module a json file containing a <span style="color:orange">statistic report</span> is created.
 ```mermaid
 graph LR;
 A{Sim_Network} -->|call| B(single_taxonomy);
