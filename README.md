@@ -71,7 +71,7 @@ $ python3 SimNetwork.py $1 $2 $3 $4
 ## Program structure
 
 The program consist of 5 modules and an extra folder. Each module and also the folder should be in the same direction. The folder is needed for writing and reading files created by the program during runtime. If the folder is empty when the program starts, the programm creates all the files at runtime.
-If the folder is filled with the files from the last run, all files will be **overwriten** in the new run.
+If the folder is filled with the files from the last run, all files will be **overwriten** in the new run.(example data in the output_data)
 
 <p>&nbsp;</p>
 <center>
@@ -87,7 +87,7 @@ statistic_report.py
 </center>
 <p>&nbsp;</p>
 
-After starting the program, the main function calls the single_taxnomy moduls and then runs through the program from top to bottom as shown in the scheme. Beside the required tables and files, there are a <span style="color:orange">bar chart</span> and a <span style="color:orange">venn diagram</span> for the aglycons and their taxonomy from the selected databases. When the program runs through the statistic_report module a json file containing a <span style="color:orange">statistic report</span> is created.
+After starting the program, the main function calls the single_taxonomy moduls and then runs through the program from top to bottom as shown in the scheme. Beside the required tables and files, there are a <span style="color:orange">bar chart</span> and a <span style="color:orange">venn diagram</span> for the aglycons and their taxonomy from the selected databases. When the program runs through the statistic_report module a json file containing a <span style="color:orange">statistic report</span> is created.
 ```mermaid
 graph LR;
 A{Sim_Network} -->|call| B(single_taxonomy);
@@ -100,7 +100,17 @@ A{Sim_Network} -->|call| B(single_taxonomy);
     E-->|write| F
     F-->|read| A
 ```
+#### More detailed description
+The Sim_Network module is the main module with the main function and is used as control module for the user input and the file reading from the output_data folder. 
 
+The first called module is the single_taxonomy module. In this module all aglycons from the sweetcoconut and coconut database are saved in data frame and merged together, to get a dataframe with all aglycons in the sweetcoconut database with have a known or not known taxonomy. Two aglycons with the same structure but different id have had different sugar surroundings. Nevertheless all aglycons with the same structure should be produced by the same (super)kingdom. Afterwards a data frame was created where each row contain a different aglycon structure its taxonomy is unknown or from one particular (super)kingdom.
+
+The second called module is the tanimoto_index module. The module is creates Morgan Fingerprints for each smiles code of the aglycons and determine the tanimoto index between all two pair combinations of aglycons. The written data frame includes the smiles code of the aglycons pairs as well as the taxonomies and the tanimoto index for all aglycon pairs with an higher tanimoto index than the set similarity input. 
+
+The third called module is the prediction_annotation module. In this module a similarity network for the aglycons are created. If the size of the cluster is greater than two and more than the half of the aglycons in the cluster are from the same (super)kingdom, all aglycons with an unknown taxonomy or a different taxonomy get a predicted annotation, which includes a predict as prefix. Aglycons with a different taxonomy still have their old taxonomy with the predict taxonomy added right behind. A list of dataframes a created where each dataframe corresponds to one cluster.
+
+The last called module creates a statistic report from the list of data frames and write a json file with all important data.
+ 
 ## Limits of the program
 
 - max 3 different annotations for one aglycon:
