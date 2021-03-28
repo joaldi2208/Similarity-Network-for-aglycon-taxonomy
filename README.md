@@ -137,7 +137,7 @@ platform](https://cheminf.uni-jena.de), or directly from
 
 ### Possible extensions or improvements
 - the program is basesd a one simple comparison of structures, which leads to a long runtime
-(O(n<sup>2</sup>)). A time-efficient search algorithm for two-pair comparisons could therefore reduce the runtime immensley.
+(O(n)). A time-efficient search algorithm for two-pair comparisons could therefore reduce the runtime immensley.
 - the number of usable superkingdoms could be extended
 - So far there is no validation of the predictions made for the superkingdoms
 
