@@ -133,7 +133,7 @@ This repository will not be improved or updated. All adaptations of the
 project will be managed by my supervisor Dr. Maria Sorokina.
 Contacts and information are available through the [Cheminformatics and Computational Metablomics
 platform](https://cheminf.uni-jena.de), or directly from 
-[Maria Sorokina](https://cheminf.uni-jena.de/members/maria-sorokina/).
+[Maria Sorokina](https://github.com/mSorok).
 
 ### Possible extensions or improvements
 - the program is basesd a one simple comparison of structures, which leads to a long runtime
