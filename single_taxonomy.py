@@ -13,13 +13,13 @@ from collections import Counter
 
 def complete_databank(port="localhost:27017",coconut_database="COCONUT2020-10",sweetcoconut_database="sweetcoconut"):
     """
-    Get user input like the localhost and the similarity value for the comparision.
+    Gets user input such as the localhost and the similarity value for the comparision.
 
-    Read all the ringsugars in the given database and and create a data frame with aglycons, 
+    Reads all the ringsugars in the given database and and creates a data frame with aglycons, 
     their coconut_id and taxonomy. The biological names are delete and if  
-    there are two different taxonomies for one aglycon, the taxonomy is named 'double'.
+    there are two different taxonomies for an aglycon, the taxonomy is called 'double'.
 
-    Pass the created data frame.
+    Passes the created data frame.
     """
     client = MongoClient(port)
     db_complete = client[coconut_database]
@@ -96,14 +96,14 @@ def complete_databank(port="localhost:27017",coconut_database="COCONUT2020-10",s
 
 def sweetcoconut_databank(df_tax_id_fromCompleteDatabank, taxonomy_Double,sweetcoconut_database,port):
     """
-    Get the created data frame with the free columns aglycon, coconut id and taxonomy
+    Gets the created data frame with the three columns aglycon, coconut id and taxonomy
 
-    Merging sweetcocunt natural product data frame with incoming data frame on their coconut id.
-    Replacing nan with "no" if ther is a knwon taxonomy in the row for the aglycon.
-    Summarize all aglycons with the same structure in one row.
+    Merges sweetcocunt data frame with incoming data frame via their coconut id.
+    Replaces nan with "no" if there isn't a known taxonomy in the row for the aglycon.
+    Summarize all aglycons with the same structure into one row.
 
-    Write a .pkl file with where all aglycons with the same smiles code are in the same row. 
-    Pass a data frame with all the same aglycon structures in one row.
+    Writes a .pkl file with where all aglycons with the same smiles code are in the same row. 
+    Passes a data frame with all the same aglycon structures in one row.
     """
     client2 = MongoClient(port)
     db_s = client2[sweetcoconut_database]
@@ -149,11 +149,11 @@ def sweetcoconut_databank(df_tax_id_fromCompleteDatabank, taxonomy_Double,sweetc
 
 def bar_plot(df_NP):
     """
-    Get a data frame with all the same aglycon structures in one row.
+    Gets a data frame with all the same aglycon structures in one row.
 
-    Count all taxonomies and create a barplot. 'Double' is also a taxonomy.
+    Counts all taxonomies and create a barplot. 'Double' is also a taxonomy.
 
-    Save the bar plot with numbers of different taxonomies as .png.
+    Saves the bar plot with the numbers of different taxonomies as .png.
     """
     cnt = Counter()
     for tax_list in df_NP.taxonomy:
@@ -172,12 +172,12 @@ def bar_plot(df_NP):
 
 def venn_diagram(df_NP, taxonomy_Double):
     """
-    Get a data frame with all the same aglycon structures in one row.
+    Gets a data frame with all the same aglycon structures in one row.
    
-    Count all taxonomies and create a venn diagram with the four taxonomies plants, bacteria,
-    animals, fungi. Read the original taxonmies of the 'Double' entries.
+    Counts all taxonomies and creates a venn diagram with the four taxonomies plants, bacteria,
+    animals, fungi. Reads the original taxonmies of the 'Double' entries.
     
-    Save a venn-diagram of the different taxonmies as .png.
+    Saves a venn-diagram of the different taxonmies as .png.
     """
     taxonomy_Single = [list(tax) for tax in df_NP.taxonomy if 'double' not in tax]
     taxonomy_All = taxonomy_Single + taxonomy_Double
@@ -209,11 +209,11 @@ def venn_diagram(df_NP, taxonomy_Double):
 
 def aglycon_single_tax(df_NP):
     """
-    Get a data frame with all the same aglycon structures in one row and the input of similarity value to pass it.
+    Gets a data frame with all the same aglycon structures in one row.
     
-    Delete all row with more than one entry in the taxonomy row.
+    Deletes all rows with more than one entry in the taxonomy row.
 
-    Pass a data frame with only one entry (superkingdom or 'no') in the taxonomy row.
+    Passes a data frame with only one entry (superkingdom or 'no') in the taxonomy row.
     """
     # **seperate aglycons with at least two different entries in taxonomy**
     index_Unique_Tax = [ind for ind, tax_list in enumerate(df_NP.taxonomy) if len(tax_list) == 1]
