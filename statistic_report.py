@@ -12,11 +12,11 @@ import pandas as pd
 
 def statistics_of_analyse(multi_df_cluster_list):
     """
-    Read a file with list of data frames inside. The data frames consist of two columns.
-    One is the smiles code of the aglycon the other is the taxonomy.
+    Reads a file with a list of data frames inside. The data frames consist of two columns.
+    One is the smiles code of the aglycon the other is its taxonomy.
 
-    Pass the list of data frames.
-    Write a .txt file from the return value.
+    Passes the list of data frames.
+    Writes a .txt file from the return value.
     """
     with open(multi_df_cluster_list, "rb") as infile:
         similarity = pickle.load(infile, encoding='utf-8')
@@ -29,12 +29,12 @@ def statistics_of_analyse(multi_df_cluster_list):
 
 def summary(file):
     """
-    Get a list of data frames with the smiles code and the taxonomy of each aglycons.
+    Gets a list of data frames with the smiles code and the taxonomy for each aglycons.
 
-    Count and analyse statistic parameters like the max and min size of the clusters.
-    Create a dictionary with the result of the statistic report.
+    Counts and analyses statistic parameters like the max and min size of the clusters.
+    Creates a dictionary with the result of the statistic report.
     
-    Return the dictionary.
+    Returns the dictionary.
     """
     cluster_with_tax = 0
     cluster_with_prediction = 0
