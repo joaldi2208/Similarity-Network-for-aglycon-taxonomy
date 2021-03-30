@@ -14,12 +14,12 @@ import pickle
 
 def clustering(df_fingerprint_comparison,df_single_taxonomy):
     """
-    Get two data frames. One with only single entries in the taxonomy row and the other with
+    Obtains two data frames. One with only single entries in the taxonomy row and the other with
     the two aglycons, their Tanimoto Index.
 
-    Create clusters for the data frame with the Tanimoto Index by using the igraph modul.
+    Creates clusters for the data frame with the Tanimoto Index using the igraph modul.
 
-    Pass a data frame with single taxonomy entries and the created cluster object and the cluster nodes.
+    Passes a data frame with single taxonomy entries and the created cluster object and the cluster nodes.
     """
     df_all_aglycons_with_single_taxonomy = pd.read_pickle(df_single_taxonomy)
     fpc = pd.read_pickle(df_fingerprint_comparison)
@@ -35,11 +35,11 @@ def clustering(df_fingerprint_comparison,df_single_taxonomy):
 
 def cluster_in_lists(fpc_cluster, fpc_nodes, df_all_aglycons_with_single_taxonomy):
     """
-    Get a data frame with single taxonomy entries and the created cluster object and the cluster nodes.
+    Obtains a data frame with single taxonomy entries and the created cluster object and the cluster nodes.
     
-    Create a list of of clusters. Each aglycon is represented by their smiles code and their taxonomy.
+    Creates a list of clusters. Each aglycon is represented by their smiles code and their taxonomy.
     
-    Pass a list of lists, where each list represents a cluster of aglycons.
+    Passes a list of lists, where each list represents a cluster of aglycons.
     """
     multi_cluster_list = []
     for index_list in fpc_cluster:
@@ -61,14 +61,14 @@ def cluster_in_lists(fpc_cluster, fpc_nodes, df_all_aglycons_with_single_taxonom
 
 def predict_annotation(multi_cluster_list):
     """
-    Get a list of lists with aglycons and their taxonomy as key-value-pair.
+    Obtains a list of lists with aglycons and their taxonomy as key-value-pair.
 
-    If the size of the cluster is greater than two and more of the half aglycons
+    If the size of the cluster is greater than two and more than half of the aglycons
     have a known taxonomy, all other aglycons get this taxonomy as predict taxonomy.
-    When the taxonomy of one aglycon is unknown, the new taxonomy is named predict_$new taxonomy$
-    When the taxonomy of one aglycon is different, the new taxonomy is named $old taxonomy$/predict_$new taxonomy$
+    If the taxonomy of an aglycon is unknown, the new taxonomy is named predict_$new taxonomy$
+    If the taxonomy of an aglycon is different, the new taxonomy is named $old taxonomy$/predict_$new taxonomy$
 
-    Pass a list of lists with customized key-value-pairs
+    Passes a list of lists with customized key-value-pairs
     """
     cnt = Counter()
     for ind1, aglycon_tax_list in enumerate(multi_cluster_list):
@@ -99,12 +99,12 @@ def predict_annotation(multi_cluster_list):
 
 def create_dataframe(multi_cluster_list):
     """
-    Get a list of lists with customized key-value-pairs
+    Obtains a list of lists with customized key-value-pairs
 
-    Every cluster become a data frame with two columns, one is the smiles code and the 
-    other one is the taxonomy
+    Every cluster becomes a data frame with two columns, one is the smiles code and the 
+    other is its taxonomy.
 
-    Write a .txt file with the lists of dataframes.
+    Writes a .txt file with the lists of dataframes.
     """
     multi_df_cluster_list = []
     for aglycon_tax_list in multi_cluster_list:
