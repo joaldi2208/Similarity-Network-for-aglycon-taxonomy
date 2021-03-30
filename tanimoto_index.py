@@ -20,11 +20,11 @@ import pickle
 
 def create_fingerprints(df_Without_Double_or_Triple, similarity_value = 0.95):
     """
-    Get a data frame with only a single entry in the taxonomy row
+    Gets a data frame with only a single entry in the taxonomy row.
     
-    Use RDkit modul to create Morgan-Fingerprints from the smiles code of each aglycon.
+    Uses RDkit modul to create Morgan-Fingerprints from the smiles code of each aglycon.
 
-    Pass the input of the similarity value, the smiles code of the aglycons, the fingerprint of the aglycons and
+    Passes the input of the similarity value, the smiles code of the aglycons, the fingerprint of the aglycons and
     the created data frame with only single entries in the taxonomy row.
     """
     with open(df_Without_Double_or_Triple, "rb") as infile:
@@ -61,13 +61,13 @@ def create_fingerprints(df_Without_Double_or_Triple, similarity_value = 0.95):
 
 def create_tanimoto_index(similarity_value, aglycon_formulas, fps, df_Without_Double_or_Triple):
     """
-    Get the similarity value, the Morgan-Fingerprint of each aglycon and a data frame with only single 
+    Gets the similarity value, the Morgan-Fingerprint of each aglycon and a data frame with only single 
     entries in the taxonomy row.
     
-    Check the Tanimito Index for all possible two-pairs of aglycons. If the value of the Tanimoto 
-    Index is above the given similarity value, the aglycons and their Tanimoto Index are append to a new data frame.
+    Checks the Tanimito Index for all possible pairs of two aglycons. If the value of the Tanimoto 
+    Index is above the given similarity value, the aglycons and their Tanimoto Index are appended to a new data frame.
     
-    Pass the new three column data frame with both aglycons and their Tanimoto Index.
+    Passes the new three column data frame with both aglycons and their Tanimoto Index.
     """
     aglycon_pairs = itertools.combinations(fps, 2)
     aglycon1 = []
@@ -94,13 +94,13 @@ def create_tanimoto_index(similarity_value, aglycon_formulas, fps, df_Without_Do
 
 def create_df_with_tanimoto_index(df_comparison,df_Without_Double_or_Triple):
     """
-    Get a data frame with two aglycons and their Taninmoto Index and a data frame with only single 
+    Gets a data frame with two aglycons and their Taninmoto Index and a data frame with only single 
     entries in the taxonomy row.
     
-    Add the taxonomy of both aglycons to the data frame. Each taxonomy is represented as a 
-    string and a number.
+    Adds the taxonomy of both aglycons to the data frame. Each taxonomy is represented as a 
+    string and a number(the numbers can be used for a representation in cytoscape).
 
-    Writing an .csv and an .pkl file for the expanded data frame.
+    Writes an .csv and an .pkl file for the expanded data frame.
     """
     df_aglycon_taxes_1 = pd.DataFrame({
         "aglycon1": df_Without_Double_or_Triple.deglycosilated_smiles,
