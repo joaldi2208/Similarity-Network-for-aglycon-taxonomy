@@ -63,14 +63,14 @@ $ python3 SimNetwork.py $1 $2 $3 $4
 - `$3`: coconut database (default: COCONUT2020-10)
 - `$4`: sweetcoconut database (default: sweetcoconut)
 
-> input `$4` requires also input `$3`, `$2` and `$1`, while input `$3` requires `$2` and `$1` ...
+> the order of the inputs must be respected. So `$1` can be the only set variable but for example input `$2`needs input `$1`to keep the order.
 
 
 
 
 ## Program structure
 
-The program consist of 5 modules and an extra folder. Each module and also the folder should be in the same direction. The folder is needed for writing and reading files created by the program during runtime and has to be precreated. The best way to do it, is to clone this repository with the 'git clone joaldi2208/Similarity-Network-for-aglycon-taxonomy-on-COCONUT' command. If the folder is empty when the program starts, the programm creates all the files at runtime.
+The program consist of 5 modules and an extra folder. Each module and also the folder should be in the same direction. The folder is needed for writing and reading files created by the program during runtime and has to be precreated. The best way to do it, is to clone this repository with the `git clone joaldi2208/Similarity-Network-for-aglycon-taxonomy-on-COCONUT` command. If the folder is empty when the program starts, the programm creates all the files at runtime.
 If the folder is filled with the files from the last run, all files will be **overwriten** in the new run. In this repository, the ouput_data folder is filled with the sample data with a similarity value of 0.90.
 
 <p>&nbsp;</p>
@@ -140,7 +140,7 @@ platform](https://cheminf.uni-jena.de), or directly from
 (O(n<sup>2</sup>)). A time-efficient search algorithm for two-pair comparisons could therefore reduce the runtime immensley.
 - the number of usable superkingdoms could be extended
 - So far there is no validation of the predictions made for the superkingdoms
-- the rules for annotation can be improved in future versions. Which percent of annotated aglycons in a cluster is required to predict the annotation of all other algycons in the same cluster?
+- the rules for annotation can be improved in future versions: What percentage of annotated aglycons in a cluster is required to predict the annotation of all other algycons in the same cluster? 
 
 
 
