@@ -33,9 +33,9 @@ $ conda install -c conda-forge pandas
 $ conda create -c conda-forge -n my-rdkit-env rdkit
 ```
 
-The installations are also possible with *pip* as installation manager.
+The installations are also possible with *pip* as installation manager except from the RDKit environment, which have to be installed with conda.
 
-Beside the Python libaries and the rdkit environment, MongoDB must be installed and the coconut and sweetcoconut databases must be downloaded. More information on the [MongoDB](https://www.mongodb.com/try/download/community) homepage.
+Beside the Python libaries and the RDKit environment, MongoDB must be installed and the coconut and sweetcoconut databases must be downloaded. More information on the [MongoDB](https://www.mongodb.com/try/download/community) homepage.
 
 ## Start
 
@@ -61,7 +61,7 @@ $ python3 SimNetwork.py $1 $2 $3 $4
 - `$1`: similarity value between 0 and 1 (default: 0.95)
 - `$2`: port (default: localhost:27017)
 - `$3`: coconut database (default: COCONUT2020-10)
-- `$4`: sweetcoconut databse (default: sweetcoconut)
+- `$4`: sweetcoconut database (default: sweetcoconut)
 
 > input `$4` requires also input `$3`, `$2` and `$1`, while input `$3` requires `$2` and `$1` ...
 
@@ -70,7 +70,7 @@ $ python3 SimNetwork.py $1 $2 $3 $4
 
 ## Program structure
 
-The program consist of 5 modules and an extra folder. Each module and also the folder should be in the same direction. The folder is needed for writing and reading files created by the program during runtime. If the folder is empty when the program starts, the programm creates all the files at runtime.
+The program consist of 5 modules and an extra folder. Each module and also the folder should be in the same direction. The folder is needed for writing and reading files created by the program during runtime and has to be precreated. The best way to do it, is to clone this repository with the 'git clone joaldi2208/Similarity-Network-for-aglycon-taxonomy-on-COCONUT' command. If the folder is empty when the program starts, the programm creates all the files at runtime.
 If the folder is filled with the files from the last run, all files will be **overwriten** in the new run. In this repository, the ouput_data folder is filled with the sample data with a similarity value of 0.90.
 
 <p>&nbsp;</p>
@@ -137,9 +137,10 @@ platform](https://cheminf.uni-jena.de), or directly from
 
 ### Possible extensions or improvements
 - the program is basesd a one simple comparison of structures, which leads to a long runtime
-(O(n)). A time-efficient search algorithm for two-pair comparisons could therefore reduce the runtime immensley.
+(O(n<sup>2</sup>)). A time-efficient search algorithm for two-pair comparisons could therefore reduce the runtime immensley.
 - the number of usable superkingdoms could be extended
 - So far there is no validation of the predictions made for the superkingdoms
+- the rules for annotation can be improved in future versions. Which percent of annotated aglycons in a cluster is required to predict the annotation of all other algycons in the same cluster?
 
 
 
