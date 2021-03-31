@@ -70,7 +70,7 @@ $ python3 SimNetwork.py $1 $2 $3 $4
 
 ## Program structure
 
-The program consist of 5 modules and an extra folder. Each module and also the folder should be in the same direction. The folder is needed for writing and reading files created by the program during runtime and has to be precreated. The best way to do it, is to clone this repository with the `git clone joaldi2208/Similarity-Network-for-aglycon-taxonomy-on-COCONUT` command. If the folder is empty when the program starts, the programm creates all the files at runtime.
+The program consist of 5 modules and an extra folder. Each module and also the folder should be in the same direction. The folder is needed for writing and reading files created by the program during runtime and has to be precreated. The best way to do it, is to clone this repository with the `git clone https://github.com/joaldi2208/Similarity-Network-for-aglycon-taxonomy-on-COCONUT` command. If the folder is empty when the program starts, the programm creates all the files at runtime.
 If the folder is filled with the files from the last run, all files will be **overwriten** in the new run. In this repository, the ouput_data folder is filled with the sample data with a similarity value of 0.90.
 
 <p>&nbsp;</p>
